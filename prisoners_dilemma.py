@@ -71,13 +71,12 @@ def main_play(modules):
     return scores, moves, [section0, section1, section2, section3]
         
 def play_tournament(modules):
-    '''Each argument is a module name
-    Each module must contain 
-        team_name: a string
-        strategy_name: a string
-        strategy_description: a string
-        move: A function that returns 'c' or 'b'
-    '''
+    team_name = 'team0'
+    strategy_name = 'Never Lose'
+    strategy_description = 'Always return b for betray because you can never lose, you can either gain points or penalize yourself and your opponent'
+    def move(my_history, their_history, my_score, their_score):
+        return 'b'
+
     zeros_list = [0]*len(modules) # to initialize each player's head-to-head scores
     scores = [zeros_list[:] for module in modules] # Copy it or it's only 1 list
     moves = [zeros_list[:] for module in modules] # Copy it or it's only 1 list
@@ -99,8 +98,8 @@ def play_tournament(modules):
 
 
 def play_iterative_rounds(player1, player2):
-    '''
-    Plays a random number of rounds (between 100 and 200 rounds) 
+    
+    '''Plays a random number of rounds (between 100 and 200 rounds) 
     of the iterative prisoners' dilemma between two strategies.
     player1 and player2 are modules.
     Returns 4-tuple, for example ('cc', 'bb', -200, 600) 
@@ -381,6 +380,6 @@ if __name__ == '__main__':
     scores, moves, reports = main_play(modules[0:4])   
     section0, section1, section2, section3 = reports
     
-def team_name:
+def team_name():
     team_name = 'The name the team gives itself'
     
